@@ -1,0 +1,10 @@
+# Data processing
+pandas
+numpy
+
+# Machine learning
+scikit-learn
+
+# Logging and utilities
+loguru
+tqdm
