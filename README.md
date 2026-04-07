@@ -9,6 +9,22 @@ The system follows a multi-signal analytical approach that integrates data colle
 ## Signals Considered
 The system evaluates a diverse set of signals capturing structural, behavioral, and content-level characteristics of parked web pages. These include indicators derived from page content, redirect behavior, and observable patterns in page structure and composition. Features are designed to capture anomalies, repetition, monetization signals, and deviations from typical inactive page behavior.
 
+## Project Structure
+```text
+sketchy-parking-lot/
+├── data/
+├── notebooks/
+│   └── wrangling_analysis.ipynb
+├── outputs/
+├── src/
+│   └── run_pipeline.py
+├── .dockerignore
+├── Dockerfile
+├── README.md
+├── requirements.txt
+└── run_pipeline.sh
+```
+
 ## Running the Project (Docker)
 ### Build the Docker image
 From the root of the repository:
@@ -19,29 +35,11 @@ docker build -t sketchy-parking-lot .
 ### Run the pipeline
 Execute the container:
 ```bash
-docker run --rm -it sketchy-parking-lot
-```
-This runs the pipeline entrypoint defined in run_pipeline.sh.
-
-## Project Structure
-The repository is organized to separate exploratory work, feature construction, and execution of the pipeline:
-
-```text
-sketchy-parking-lot/
-├── data/
-│   └──raw/
-├── notebooks/
-│   └── wrangling_analysis.ipynb
-├── src/
-│   ├── run_pipeline.py
-│   ├── features.py
-│   └── scoring.py
-├── outputs/
-├── Dockerfile
-├── requirements.txt
-├── .dockerignore
-├── run_pipeline.sh
-└── README.md
+docker run --rm \
+  -u $(id -u):$(id -g) \
+  -v "$(pwd)/data:/app/data" \
+  -v "$(pwd)/outputs:/app/outputs" \
+  sketchy-parking-lot
 ```
 
 ## Related Work and References

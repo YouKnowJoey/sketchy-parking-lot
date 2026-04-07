@@ -10,11 +10,14 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
+RUN useradd --create-home appuser
+
 COPY src ./src
 COPY run_pipeline.sh .
-COPY data ./data
-COPY outputs ./outputs
 
-RUN chmod +x /app/run_pipeline.sh
+RUN chmod +x /app/run_pipeline.sh && \
+    chown -R appuser:appuser /app
+
+USER appuser
 
 CMD ["bash", "run_pipeline.sh"]
