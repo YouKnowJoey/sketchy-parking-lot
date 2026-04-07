@@ -1,9 +1,7 @@
 # Project Sketchy Parking Lot
 
-## Overview
-
 ## Project Objective
-Our objective is to design a Python-based system suitable for integration into security analysis workflows that classifies parked webpages based on observed behavioral and content signals. The system will label parked webpages as either malicious or benign. It is designed as a containerized Python pipeline to ensure consistent execution across environments.
+Our objective is to design a Python-based microservice suitable for integration into security analysis workflows that classifies parked webpages based on observed behavioral and content signals. The system will label parked webpages as suspicious, malicious, or benign. It is designed as a containerized Python pipeline to ensure consistent execution across environments.
 
 ## Approach
 The system follows a multi-signal analytical approach that integrates data collection, feature extraction, and scoring into a unified pipeline. It processes parked web page data to capture a range of behavioral and content-based indicators, which are transformed into structured features for analysis. These features are evaluated using a combination of rule-based scoring and anomaly detection techniques to identify patterns associated with deceptive or abuse-prone infrastructure. The approach prioritizes scalability, modularity, and interpretability, allowing the system to adapt as additional signals and data sources are incorporated.
@@ -13,6 +11,17 @@ The system evaluates a diverse set of signals capturing structural, behavioral, 
 
 ## Running the Project (Docker)
 ### Build the Docker image
+From the root of the repository:
+```bash
+docker build -t sketchy-parking-lot .
+```
+
+### Run the pipeline
+Execute the container:
+```bash
+docker run --rm -it sketchy-parking-lot
+```
+This runs the pipeline entrypoint defined in run_pipeline.sh.
 
 ## Project Structure
 The repository is organized to separate exploratory work, feature construction, and execution of the pipeline:
