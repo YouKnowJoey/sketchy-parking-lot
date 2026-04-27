@@ -48,4 +48,4 @@ docker run --rm \
 ```
 
 ## Acknowledgments
-This project was developed as part of a capstone project focused on suspicious pattern detection in parked and dormant web infrastructure. NetSTAR Global provided the dataset and guidance during the project. 
+This project was developed as part of a capstone project with the University of Arizona focused on suspicious pattern detection in parked and dormant web infrastructure.
