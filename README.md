@@ -12,12 +12,17 @@ The system evaluates a diverse set of signals capturing structural, behavioral, 
 ## Project Structure
 ```text
 sketchy-parking-lot/
-├── data/
+├── models/
+│   └── lid.176.ftz
 ├── notebooks/
 │   └── wrangling_analysis.ipynb
 ├── outputs/
 ├── src/
-│   └── run_pipeline.py
+│   ├── run_pipeline.py
+│   ├── sketchy_features.py
+│   ├── sketchy_lang_id.py
+│   ├── sketchy_tokenizer.py
+│   └── sketchy_unsupervised_models.py
 ├── .dockerignore
 ├── Dockerfile
 ├── README.md
@@ -42,4 +47,5 @@ docker run --rm \
   sketchy-parking-lot
 ```
 
-## Related Work and References
+## Acknowledgments
+This project was developed as part of a capstone project with the University of Arizona focused on suspicious pattern detection in parked and dormant web infrastructure.
