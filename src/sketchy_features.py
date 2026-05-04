@@ -44,7 +44,8 @@ class SketchyFeatures:
         """
 
         # Step 1: Build n-grams automatically
-        self.build_ngram_vocabulary()
+        if len(self.all_ngrams) == 0:
+            self.build_ngram_vocabulary()
 
         # Step 2: Expand keyword sets
         self.ad_keywords = self.expand_keywords(
