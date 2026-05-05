@@ -68,3 +68,9 @@ class UnsupervisedSketchyModels:
 
     def normalize_score(self, x):
         return 100 * (x - x.min()) / (x.max() - x.min())
+
+    def sketchy_fitting(self, n_clusters=3, n_estimators=100, contamination=0.01):
+        ''' Fit both k-means and isolation forest models and return results '''
+        self.fit_kmeans(n_clusters=n_clusters)
+        self.fit_isolation_forest(n_estimators=n_estimators, contamination=contamination)
+        return self.df
