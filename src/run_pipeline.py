@@ -29,7 +29,7 @@ def tokenizer_pipeline(data_dir: Path, outputs_dir: Path):
 def main():
     print("Container is running...")
 
-    data_dir = Path("/app/data")
+    data_dir = Path("/app/data/parked_suspicious")
     outputs_dir = Path("/app/outputs")
 
     # Ensure output directory exists
