@@ -1,17 +1,18 @@
 # Project Sketchy Parking Lot: Unsupervised Learning for Suspicious Patterns in Parked and Dormant Domains
 
 ## Context
-Parked websites are dangerous, opaque redirect hubs that can hide malicious activity through zero-click redirect chains exposing users to harm with no visible interactions.
+Parked websites can appear inactive or harmless while still routing users through opaque redirect chains that may expose them to deceptive advertising, domain shifting, or other abuse-prone behavior.
 
-> We define "suspicious domains" as potentially exploitable redirects starting from trusted, reputable parked pages and providers.
+**We define "suspicious domains" as potentially exploitable redirects starting from trusted, reputable parked pages and providers.**
 
 ![Redirect Chains: Why Zero Click Redirects Matter](images/redirect_concern.png)
+> Example of malicious redirect chain.
 
 ## Project Objective
 Our objective is to design a Python-based microservice suitable for integration into security analysis workflows that will score parked webpages based on observed behavioral and content signals. It is designed as a containerized Python pipeline to ensure consistent execution across environments when using intended proprietary cybersecurity data.
 
 ## Approach
-The system follows a multi-signal analytical approach that integrates data collection, feature extraction, and scoring into a unified pipeline. It processes parked web page data to capture a range of behavioral and content-based indicators, which are transformed into structured features for analysis. These features are evaluated using **unsupervised learning** methods (isolation forest and k-means) for scoring and anomaly detection to identify patterns associated with deceptive or abuse-prone infrastructure. The approach prioritizes scalability, modularity, and interpretability, allowing the system to adapt as additional signals and data sources are incorporated. We test the accuracy of the results by manually reviewing the outputs because we don't have reliably labeled data, hence the importance of this project.
+The system follows a multi-signal analytical approach that integrates data collection, feature extraction, and scoring into a unified pipeline. It processes parked web page data to capture a range of behavioral and content-based indicators, which are transformed into structured features for analysis. These features are evaluated using **unsupervised learning** methods (Isolation Forest and k-means) for scoring and anomaly detection to identify patterns associated with deceptive or abuse-prone infrastructure. The approach prioritizes scalability, modularity, and interpretability, allowing the system to adapt as additional signals and data sources are incorporated. We test the accuracy of the results by manually reviewing the outputs because we don't have reliably labeled data, hence the importance of this project.
 
 ## Aspirational Future Work
 - Evaluate different behaviors of a singular domain using **different IP origins** (through proxy servers) and browser type. IP origins should differentiate by State or Country. Browsers for consideration are Brave, Firefox, Safari, and Microsoft Edge
@@ -28,13 +29,14 @@ The system evaluates a diverse set of signals capturing structural, behavioral, 
 ### Highlighted Engineered Features
 - Top phrases in content creates "ad_score", "parked_score", "suspicious_score"
 
-- Using jaccard similiarty as a numerical metric, our redirect chain analysis produces "num_redirects", "avg_redirect_jaccard", "min_redirect_jaccard", "low_redirect_similarity_flag", "first_last_redirect_similarity"
+- Using Jaccard Similiarty as a numerical metric, our redirect chain analysis produces "num_redirects", "avg_redirect_jaccard", "min_redirect_jaccard", "low_redirect_similarity_flag", "first_last_redirect_similarity"
 
 - FastText language detection model on title & content identifies language-to-TLD mismatch analysis "lang_tld_mismatch"
 
 ## Threat Score Distribution using Isolation Forest 
 
 ![Isolation Forest Threat Score Distribution Heatmap from 0 to 100.](images/scoring_dist.png)
+> Domain observations projected onto two PCA components and colored by Isolation Forest threat score.
 
 ## Project Structure
 ```text
