@@ -11,7 +11,7 @@ import fasttext
 class SketchyLangID:
     def __init__(self):
         BASE_DIR = Path().resolve().parent
-        self.MODEL_PATH = BASE_DIR / "models" / "lid.176.ftz"
+        self.MODEL_PATH = BASE_DIR / "app" / "models" / "lid.176.ftz"
         self.model = fasttext.load_model(str(self.MODEL_PATH))
 
     def clean_text_lang(self, text):

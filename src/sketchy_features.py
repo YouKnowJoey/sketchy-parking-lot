@@ -87,6 +87,7 @@ class SketchyFeatures:
         redirect_features = self.df["redirectChain"].apply(self.analyze_redirect_chain)
         redirect_df = pd.DataFrame(list(redirect_features))
         self.df = pd.concat([self.df, redirect_df], axis=1)
+        self.df["first_last_redirect_similarity"] = self.df["redirectChain"].apply(self.original_vs_final_similarity)
 
         return self.df
 
@@ -156,7 +157,7 @@ class SketchyFeatures:
 
     def tld_lang_map(self):
         tld_lang_map = (
-            self.df.groupby("tld")["language"]
+            self.df.groupby("tld")["lang"]
             .agg(lambda x: x.value_counts().index[0])
             .to_dict()
         )
@@ -165,7 +166,7 @@ class SketchyFeatures:
 
     def lang_tld_mismatch(self):
         self.df["lang_tld_mismatch"] = (
-            self.df["language"] != self.df["tld_expected_lang"]
+            self.df["lang"] != self.df["tld_expected_lang"]
         ).astype(int)
 
         self.df["lang_tld_mismatch_strong"] = (
