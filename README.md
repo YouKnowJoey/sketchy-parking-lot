@@ -34,7 +34,7 @@ The system evaluates a diverse set of signals capturing structural, behavioral, 
 
 ## Threat Score Distribution using Isolation Forest 
 
-![Isolation Forest Threat Score Distribution Heatmap from 0 to 100.](image/scoring_dist.png)
+![Isolation Forest Threat Score Distribution Heatmap from 0 to 100.](images/scoring_dist.png)
 
 ## Project Structure
 ```text
