@@ -12,7 +12,7 @@ def tokenizer_pipeline(data_dir: Path, outputs_dir: Path):
         df = tokenizer.build_text_features()
 
         print("\nPipeline complete")
-        print(f"Total rows: {len(df)}")
+        print(f"Total rows:  {len(df)}")
         print(df[["raw_text", "clean_text", "tokens", "bigrams", "trigrams"]].head(3))
 
         # Save processed output
@@ -41,11 +41,11 @@ def main():
     # Run pipeline
     df = tokenizer_pipeline(data_dir, outputs_dir)
 
-    # Docker sanity check write
-    test_file = outputs_dir / "test.txt"
-    test_file.write_text("Docker is writing to outputs\n")
+    # Docker dataframe output
+    output_file = outputs_dir / "results.csv"
+    df.to_csv(output_file, index=False)
 
-    print(f"Wrote file: {test_file}")
+    print(f"Wrote file: {output_file}")
 
 
 if __name__ == "__main__":
