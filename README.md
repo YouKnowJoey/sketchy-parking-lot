@@ -3,7 +3,7 @@
 ## Context
 Parked websites can appear inactive or harmless while still routing users through opaque redirect chains that may expose them to deceptive advertising, domain shifting, or other abuse-prone behavior.
 
-**We define "suspicious domains" as potentially exploitable redirects starting from trusted, reputable parked pages and providers.**
+**We define "suspicious domains" as those with potentially exploitable redirects starting from trusted, reputable parked pages and providers.**
 
 ![Redirect Chains: Why Zero Click Redirects Matter](images/redirect_concern.png)
 > Example of malicious redirect chain.
